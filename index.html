@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neon Pong - Sharp Edition</title>
+    <link rel="stylesheet" href="CSS/styles.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="scanlines"></div>
+
+      <button id="pauseBtn" class="pause-btn hidden">❚❚</button>
+
+      <div class="score-board">
+        <span id="playerScore">0</span>
+        <span class="divider">-</span>
+        <span id="cpuScore">0</span>
+      </div>
+
+      <canvas id="pongCanvas"></canvas>
+
+      <div id="mainMenu" class="overlay">
+        <div class="menu-background">
+          <div class="grid-top"></div>
+          <div class="grid-bottom"></div>
+        </div>
+
+        <div class="menu-content">
+          <h1 class="glitch" data-text="NEON PONG">NEON PONG</h1>
+          <div class="separator"></div>
+          <p class="subtitle">ARCADE EDITION</p>
+
+          <button id="btnPlay" class="neon-btn">INICIAR SISTEMA</button>
+
+          <div class="menu-footer">
+            <div class="key-hint">
+              <span class="key">W</span> <span class="key">S</span>
+              <span>MOVER</span>
+            </div>
+            <div class="key-hint">
+              <span class="key">P</span> <span>PAUSE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="pauseScreen" class="overlay hidden">
+        <div class="menu-background">
+          <div class="grid-top"></div>
+          <div class="grid-bottom"></div>
+        </div>
+
+        <div class="menu-content">
+          <h1 class="glitch" data-text="SISTEMA PAUSADO">SISTEMA PAUSADO</h1>
+          <div class="pause-options">
+            <button id="btnResume" class="neon-btn small">CONTINUAR</button>
+            <button id="btnQuit" class="neon-btn small danger">
+              MENU PRINCIPAL
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

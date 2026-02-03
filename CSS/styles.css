@@ -1,0 +1,281 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap");
+
+/* --- RESET --- */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #050505;
+  overflow: hidden;
+  font-family: "Orbitron", sans-serif;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* --- CONTAINER --- */
+.game-container {
+  position: relative;
+  width: 90vw;
+  height: 80vh;
+  max-width: 1200px;
+  aspect-ratio: 16/9;
+  background: #000;
+  box-shadow: 0 0 60px rgba(0, 255, 255, 0.1);
+  border: 2px solid #222;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* CANVAS */
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+/* --- GRID BACKGROUND --- */
+.menu-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: -1;
+  perspective: 500px;
+  overflow: hidden;
+}
+
+.grid-bottom {
+  position: absolute;
+  bottom: -50%;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background-image:
+    linear-gradient(#ff0066 2px, transparent 2px),
+    linear-gradient(90deg, #ff0066 2px, transparent 2px);
+  background-size: 50px 50px;
+  transform: rotateX(60deg);
+  box-shadow: none;
+  animation: gridMove 2s linear infinite;
+  opacity: 0.8;
+}
+
+.grid-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(to bottom, #000 10%, transparent 100%);
+  z-index: 2;
+}
+
+@keyframes gridMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 50px;
+  }
+}
+
+/* --- SCANLINES --- */
+.scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.2) 50%,
+    rgba(0, 0, 0, 0.2)
+  );
+  background-size: 100% 4px;
+  z-index: 50;
+  pointer-events: none;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.8);
+}
+
+/* --- OVERLAYS --- */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 40;
+  background: #000;
+}
+
+.menu-content {
+  text-align: center;
+  z-index: 10;
+}
+
+/* --- TEXTO GLITCH --- */
+.glitch {
+  font-size: 5rem;
+  margin: 0;
+  color: #fff;
+  text-shadow:
+    2px 2px 0px #ff0066,
+    -2px -2px 0px #00ffff;
+  letter-spacing: 8px;
+  animation: glitchText 3s infinite alternate;
+}
+
+#pauseScreen .glitch {
+  font-size: 3.5rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #00ffff;
+  letter-spacing: 10px;
+  margin-top: 10px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.separator {
+  width: 100px;
+  height: 2px;
+  background: #fff;
+  margin: 10px auto;
+  box-shadow: 0 0 10px #fff;
+}
+
+/* --- BOTÕES --- */
+.neon-btn {
+  background: rgba(0, 255, 255, 0.05);
+  color: #00ffff;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 18px 60px;
+  border: 1px solid #00ffff;
+  margin-top: 50px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.neon-btn:hover {
+  background: #00ffff;
+  color: #000;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+.neon-btn.small {
+  font-size: 1rem;
+  padding: 12px 30px;
+  margin-top: 15px;
+  width: 100%;
+  display: block;
+}
+.neon-btn.danger {
+  color: #ff0066;
+  border-color: #ff0066;
+}
+.neon-btn.danger:hover {
+  background: #ff0066;
+  color: #fff;
+  box-shadow: 0 0 30px rgba(255, 0, 102, 0.6);
+}
+
+.pause-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 250px;
+}
+
+/* --- PAUSE BTN --- */
+.pause-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "Orbitron", sans-serif;
+  padding: 8px 12px;
+  cursor: pointer;
+  z-index: 50;
+  transition: 0.2s;
+}
+.pause-btn:hover {
+  border-color: #fff;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* --- PLACAR --- */
+.score-board {
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  font-size: 4rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.15);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  z-index: 10;
+}
+.score-pop {
+  color: #fff !important;
+  text-shadow:
+    0 0 30px #00ffff,
+    0 0 60px #00ffff !important;
+  transform: scale(1.3);
+  transition: 0.1s;
+}
+.score-board span {
+  transition: 0.3s;
+}
+
+.menu-footer {
+  margin-top: 60px;
+  display: flex;
+  gap: 40px;
+}
+.key-hint {
+  color: #666;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.key {
+  border: 1px solid #444;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #aaa;
+  font-weight: bold;
+  font-size: 0.7rem;
+}
